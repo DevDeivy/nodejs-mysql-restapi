@@ -7,7 +7,7 @@ git clone https://github.com/fazt/nodejs-mysql-restapi
 cd nodejs-mysql-restapi
 docker-compose up
 npm install
-npm run dev
+npm run dev | npm start
 ```
 ### Description
 REST API (MVC) to interact with a DB in MySQL. It is about employees, their name and salary.
