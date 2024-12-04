@@ -9,3 +9,14 @@ docker-compose up
 npm install
 npm run dev
 ```
+### Description
+REST API (MVC) to interact with a DB in MySQL. It is about employees, their name and salary.
+
+### Endpoints
+```
+GET -> /api/employee
+GET -> /employees/:id
+POST -> /api/employee
+DELETE -> /employees/:id
+PATCH -> /employees/:id
+```
