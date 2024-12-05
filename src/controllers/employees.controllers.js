@@ -23,21 +23,36 @@ export const getIdEmployee = async(req, res) => {
     }
 }
 
-export const createEmployee = async(req, res) => {
-    const {name, salary} = req.body;
-    const [rows] = await pool.query('INSERT INTO employee (name, salary) VALUES (?,?)', [name, salary]);
-    if(!rows){
-        return res.status(500).send({
-            mensaje: "No se pudo crear empleado"
-        });
-    }else{
+export const createEmployee = async (req, res) => {
+    try {
+        const { name, salary } = req.body;
+        if (!name || !salary) {
+            return res.status(400).send({
+                mensaje: "Faltan campos requeridos (name, salary)",
+            });
+        }
+        const [rows] = await pool.query(
+            "INSERT INTO employee (name, salary) VALUES (?, ?)",
+            [name, salary]
+        );
+        if (!rows.affectedRows) {
+            return res.status(500).send({
+                mensaje: "No se pudo crear el empleado",
+            });
+        }
         res.send({
             id: rows.insertId,
             name,
-            salary
+            salary,
         });
-    };
+    } catch (error) {
+        console.error("Error en createEmployee:", error);
+        res.status(500).send({
+            mensaje: "Error interno del servidor",
+        });
+    }
 };
+
 
 export const deleteEmployee = async(req, res) => {
     const id = req.params.id; //segunda manera
