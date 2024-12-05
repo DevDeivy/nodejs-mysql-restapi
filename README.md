@@ -3,14 +3,14 @@
 ### Installation
 
 ```
-git clone https://github.com/fazt/nodejs-mysql-restapi
+git clone https://github.com/DevDeivy/nodejs-mysql-restapi.git
 cd nodejs-mysql-restapi
 docker-compose up
 npm install
 npm run dev | npm start
 ```
 ### Description
-REST API (MVC) to interact with a DB in MySQL. It is about employees, their name and salary.
+REST API (MVC) to interact with a DB in MySQL. It is about employees, their name and salary. If you want to test all request of API you can do it in the extension of VScode Thunder Client or in Postman, Thank you for waching.
 
 ### Endpoints
 ```
