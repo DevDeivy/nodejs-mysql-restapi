@@ -5,8 +5,7 @@
 ```
 git clone https://github.com/DevDeivy/nodejs-mysql-restapi.git
 cd nodejs-mysql-restapi
-docker-compose up
-npm install
+npm i
 npm run dev | npm start
 ```
 ### Description
@@ -19,4 +18,7 @@ GET -> /employees/:id
 POST -> /api/employee
 DELETE -> /employees/:id
 PATCH -> /employees/:id
+```
+```
+Tools deployed in Railway -> https://nodejs-mysql-restapi-production-afc7.up.railway.app/api/employees
 ```
