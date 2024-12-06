@@ -6,7 +6,6 @@ import {DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, DB_PORT} from '../src/config
 //     password: 'root',
 //     database: 'companydb'
 // }); 
-
 export const pool = createPool({
     host: DB_HOST,
     user: DB_USER,                 //Para producción
