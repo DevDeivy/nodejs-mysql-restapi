@@ -25,27 +25,18 @@ export const getIdEmployee = async(req, res) => {
 
 export const createEmployee = async (req, res) => {
     try {
-        console.log("Request body:", req.body); // Log del cuerpo recibido
-        const { name, salary } = req.body;
+        const {id, name, salary } = req.body;
 
         if (!name || !salary) {
-            console.log("Campos faltantes:", { name, salary });
             return res.status(400).send({
-                mensaje: "Faltan campos requeridos (name, salary)",
+                mensaje: "Faltan campos requeridos (id, name, salary)",
             });
         }
 
         const [rows] = await pool.query(
-            "INSERT INTO employee (name, salary) VALUES (?, ?)",
-            [name, salary]
+            "INSERT INTO employee (id, name, salary) VALUES (?, ?, ?)",
+            [id, name, salary]
         );
-
-        console.log("SQL insert response:", rows);
-        if (!rows.affectedRows) {
-            return res.status(500).send({
-                mensaje: "No se pudo crear el empleado",
-            });
-        }
 
         res.send({
             id: rows.insertId,
@@ -59,8 +50,6 @@ export const createEmployee = async (req, res) => {
         });
     }
 };
-
-
 
 export const deleteEmployee = async(req, res) => {
     const id = req.params.id; //segunda manera
